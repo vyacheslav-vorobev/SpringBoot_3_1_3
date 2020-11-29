@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+    id:
+    <a th:text = "${user.getId()}"></a>
+    <br>
+    Login:
+    <a th:text = "${user.getLogin()}"></a>
+    <br>
+    FirstName:
+    <a th:text = "${user.getFirstName()}"> </a>
+    <br>
+    LastName:
+    <a th:text = "${user.getLastName()}"> </a>
+    <br>
+    Age:
+    <a th:text = "${user.getAge()}"> </a>
+    <br>
+    Growth:
+    <a th:text = "${user.getGrowth()}"> </a>
+    <br/>
+    <br/>
+    <a th:href = "@{/logout}">Logout</a>
+</body>
+</html>
