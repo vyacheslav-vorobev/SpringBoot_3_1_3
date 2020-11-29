@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleServiceImp implements RoleService{
-    @Autowired
+
     RoleDao roleDao;
+    @Autowired
+    public RoleServiceImp(RoleDao roleDao){
+        this.roleDao = roleDao;
+    }
     @Override
     public Role getOne(Long id){
         return roleDao.getOne(id);

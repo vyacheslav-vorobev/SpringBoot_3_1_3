@@ -1,6 +1,7 @@
 package com.slavik.SpringBoot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,9 +16,8 @@ import com.slavik.SpringBoot.model.User;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
-@Component
-public class UserDetailServiceImpl implements UserDetailsService {
+@Service()
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     UserDao userDao;

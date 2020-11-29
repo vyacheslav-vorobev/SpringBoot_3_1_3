@@ -1,6 +1,5 @@
 package com.slavik.SpringBoot.service;
 
-import com.slavik.SpringBoot.dao.RoleDao;
 import com.slavik.SpringBoot.dao.UserDao;
 import com.slavik.SpringBoot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +10,11 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
-    @Autowired
     private UserDao userDao;
     @Autowired
-    private RoleDao roleDao;
+    public UserServiceImp(UserDao userDao){
+        this.userDao = userDao;
+    }
 
     @Transactional
     @Override
