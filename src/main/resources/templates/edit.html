@@ -25,6 +25,12 @@
     <label for="growth">Growth</label>
     <input type = "text" th:field="*{growth}" id = "growth">
     <br/>
+    <p>
+        <select size="2" name="role">
+            <option value="USER">USER</option>
+            <option selected value="ADMIN">ADMIN</option>
+        </select>
+    </p>
     <input type="submit" value="Update"/>
 </form>
 

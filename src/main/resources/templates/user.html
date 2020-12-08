@@ -2,29 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
     <title>user</title>
 </head>
 <body>
-    id:
-    <a th:text = "${user.getId()}"></a>
-    <br>
-    Login:
-    <a th:text = "${user.getLogin()}"></a>
-    <br>
-    FirstName:
-    <a th:text = "${user.getFirstName()}"> </a>
-    <br>
-    LastName:
-    <a th:text = "${user.getLastName()}"> </a>
-    <br>
-    Age:
-    <a th:text = "${user.getAge()}"> </a>
-    <br>
-    Growth:
-    <a th:text = "${user.getGrowth()}"> </a>
-    <br/>
-    <br/>
-    <a th:href = "@{/logout}">Logout</a>
+<!--<div class="container-fluid">-->
+    <div class="row">
+        <div >
+            <nav class="navbar bg-dark " >
+                <span class="text-light" th:text = "|${userLogin} with roles: ${role}|"></span>
+                <a type="submit" class="text-muted text-decoration-none" th:href = "@{/logout}" th:text = "Logout"></a>
+            </nav>
+            <br/>
+        </div>
+
+        <br/>
+        <div class="col-md-2">
+            <nav class="nav nav-pills flex-column">
+                <a class="nav-link" th:href = "@{/admin}">Admin</a>
+                <a class="nav-link active" th:href="@{/user}">User</a>
+            </nav>
+        </div>
+
+        <div class="col-md-10 bg-light" id ="admin">
+            <h1>User information-page</h1>
+                <div class="tab-pane fade show active" id="user_table">
+                    <div class="card-header">
+                        <h4 class="card-title">About user</h4>
+                    </div>
+                    <div class="container">
+                        <hr/>
+                        <div class="card-dody">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Login</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Role</th>
+                                        <th>Age</th>
+                                        <th>Growth</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-active">
+                                        <th scope="row">
+                                            <a th:text ="${user.getId()}"></a>
+                                        </th>
+                                        <td>
+                                            <a th:text ="${user.getLogin()}"></a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getFirstName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getLastName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getRoles()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getAge()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getGrowth()}"> </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+<!--    </div>-->
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>

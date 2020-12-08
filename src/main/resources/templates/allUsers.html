@@ -1,29 +1,150 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
     <title>allUsers</title>
 </head>
 
-<p>All Users:</p>
+<!--<div class="container-fluid">-->
+    <div class="row">
+         <div >
+            <nav class="navbar bg-dark " >
+                <span class="text-light" th:text = "|${userLogin} with roles: ROLE ADMIN|"></span>
+                <a type="submit" class="text-muted text-decoration-none" th:href = "@{/logout}" th:text = "Logout"></a>
+            </nav>
+             <br/>
+        </div>
+            <br/>
+            <div class="col-md-2">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link active" th:href = "@{/admin}">Admin</a>
+                    <a class="nav-link" th:href="@{/user}">User</a>
+                </nav>
+            </div>
 
-<div th:each ="user : ${users}">
-    <body>
+            <div class="col-md-10 bg-light" id ="admin">
+                <h1>Admin panel</h1>
+                <ul class="nav nav-tabs" >
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#user_table">User table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#new_user">New User</a>
+                    </li>
+                </ul>
+                <div class="tab-content" >
+                    <div class="tab-pane fade show active" id="user_table">
+                        <div class="card-header">
+                            <h4 class="card-title">All users</h4>
+                        </div>
+                        <div class="container">
+                            <hr/>
+                            <div class="card-dody">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Login</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Role</th>
+                                        <th>Age</th>
+                                        <th>Growth</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="table-active">
+                                        <th scope="row">
+                                            <a th:text ="${user.getId()}"></a>
+                                        </th>
+                                        <td>
+                                            <a th:href="@{/admin/{id}(id = ${user.getId()})}" th:text ="${user.getLogin()}"></a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getFirstName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getLastName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getRoles()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getAge()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getGrowth()}"> </a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-info text-light">
+                                                <a class="text-light text-decoration-none" th:href = "@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger text-light">
+                                                <a class="text-light text-decoration-none" th:href = "@{/admin/{id}/delete(id=${user.getId()})}">Delete</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="tab-content" th:each ="user : ${users}">
+                                        <th scope="row">
+                                            <a th:text ="${user.getId()}"></a>
+                                        </th>
+                                        <td>
+                                            <a th:href="@{/admin/{id}(id = ${user.getId()})}" th:text ="${user.getLogin()}"></a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getFirstName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getLastName()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getRoles()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getAge()}"> </a>
+                                        </td>
+                                        <td>
+                                            <a th:text = "${user.getGrowth()}"> </a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-info text-light">
+                                                <a class="text-light text-decoration-none" th:href = "@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger text-light">
+                                                <a class="text-light text-decoration-none" th:href = "@{/admin/{id}/delete(id=${user.getId()})}">Delete</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id ="new_user">
+                        <div class="card-header">
+                            <h4 class="card-title">Add new user</h4>
+                        </div>
+                        <div class="card-dody">
+                            <a th:href="@{/admin/new}">Add new user</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<!--</div>-->
 
-    <a th:text ="${user.getId()}"></a>
-    &nbsp
-    <a th:href="@{/admin/{id}(id = ${user.getId()})}" th:text ="${user.getLogin()}"></a>
-    <br/>
-    <a th:href = "@{/admin/{id}/edit(id=${user.getId()})}">update</a>
-    &nbsp
-    <a th:href = "@{/admin/{id}/delete(id=${user.getId()})}">delete</a>
-    <br/>
-    <br/>
-    </body>
-</div>
 
-<a th:href="@{/admin/new}">Add new user</a>
-<br/>
-<a th:href = "@{/logout}">Logout</a>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 </html>
