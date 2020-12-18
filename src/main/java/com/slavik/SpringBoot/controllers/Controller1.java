@@ -10,11 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @RequestMapping()
 @Controller
@@ -48,19 +45,17 @@ public class Controller1 {
         User user = userService.findByUserName(authentication.getName());
         userList.remove(user);
         model.addAttribute("users", userList);
-        model.addAttribute("userLogin", user.getLogin());
-        model.addAttribute("user", user);
+        model.addAttribute("user1", user);
+        model.addAttribute("user", new User());
+        for (User user1: userList){
+            model.addAttribute(("password"+user1.getId()), user1.getPassword());
+        }
         return "allUsers";
     }
     @GetMapping("/admin/{id}")
     public String getOneUser(@PathVariable("id")Long id, Model model){
         model.addAttribute("user", userService.getUser(id));
         return "user";
-    }
-    @GetMapping("/admin/new")
-    public String newUser(Model model) {
-        model.addAttribute("user", new User());
-        return "new";
     }
     @PostMapping("/admin/new")
     public String create(@ModelAttribute("login") String login, @ModelAttribute("password") String password,
@@ -106,7 +101,7 @@ public class Controller1 {
         userService.upDate(id,user);
         return "redirect:/admin";
     }
-    @GetMapping("admin/{id}/delete")
+    @GetMapping("admin/delete/{id}")
     public String delete(@PathVariable("id")Long id){
         System.out.println("Зашёл в DELETE");
         userService.remove(id);
