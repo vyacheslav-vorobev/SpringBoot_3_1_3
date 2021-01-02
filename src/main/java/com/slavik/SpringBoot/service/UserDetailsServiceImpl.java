@@ -16,7 +16,7 @@ import com.slavik.SpringBoot.model.User;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service()
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

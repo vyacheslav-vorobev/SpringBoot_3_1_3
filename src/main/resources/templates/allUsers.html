@@ -61,69 +61,40 @@
                                 </thead>
                                 <tbody>
                                 <tr class="table-active">
-                                    <th scope="row">
-                                        <a th:text="${user1.getId()}"></a>
+                                    <th scope="row" id = "actualUserId">
                                     </th>
-                                    <td>
-                                        <div th:name="${user1.getPassword()}" th:id="|password${user1.getId()}|">
-                                            <a th:text="${user1.getLogin()}" th:id="|login${user1.getId()}|"></a>
-                                        </div>
+                                    <td id= "actualLogin">
+<!--                                        <div th:name="${user1.getPassword()}" th:id="|password${user1.getId()}|">-->
+<!--                                            <a th:text="${user1.getLogin()}" th:id="|login${user1.getId()}|"></a>-->
+<!--                                        </div>-->
                                     </td>
+                                    <td id = "actualFirstName"></td>
+                                    <td id = "actualLastName"></td>
+                                    <td id = "actualRoles"></td>
+                                    <td id = "actualAge"></td>
+                                    <td id = "actualGrowth"></td>
                                     <td>
-                                        <a th:text="${user1.getFirstName()}" th:id="|firstname${user1.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user1.getLastName()}" th:id="|lastname${user1.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user1.getRoles()}" th:id="|roles${user1.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user1.getAge()}" th:id="|age${user1.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user1.getGrowth()}" th:id="|growth${user1.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#modalEdit" th:content="${user1.getId()}">
+                                        <button type="button" class="btn btn-primary" content="" id = "actualEdit">
                                             Edit
                                         </button>
                                     </td>
-                                    <td>
+                                    <td >
                                         <button type="button" class="btn btn-danger text-light" data-toggle="modal"
-                                                data-target="#modalDelete" th:content="${user1.getId()}">
+                                                data-target="#modalDelete" content="" id = "actualDelete">
                                             Delete
                                         </button>
                                     </td>
                                 </tr>
                                 <tr class="tab-content" th:each="user : ${users}">
-                                    <th scope="row">
-                                        <a th:text="${user.getId()}" th:id="|id${user.getId()}|"></a>
-                                    </th>
+                                    <th scope="row" th:id="|id${user.getId()}|"></th>
+                                    <td th:id="|login${user.getId()}|"></td>
+                                    <td th:id="|firstname${user.getId()}|"></td>
+                                    <td th:id="|lastname${user.getId()}|"></td>
+                                    <td th:id="|roles${user.getId()}|"></td>
+                                    <td th:id="|age${user.getId()}|"></td>
+                                    <td th:id="|growth${user.getId()}|"></td>
                                     <td>
-                                        <div th:name="${user.getPassword()}" th:id="|password${user.getId()}|">
-                                            <a th:text="${user.getLogin()}" th:id="|login${user.getId()}|"></a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user.getFirstName()}" th:id="|firstname${user.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user.getLastName()}" th:id="|lastname${user.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user.getRoles()}" th:id="|roles${user.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user.getAge()}" th:id="|age${user.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <a th:text="${user.getGrowth()}" th:id="|growth${user.getId()}|"> </a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#modalEdit" th:content="${user.getId()}">
+                                        <button type="button" class="btn btn-primary" th:content="${user.getId()}">
                                             Edit
                                         </button>
                                     <td>
@@ -182,9 +153,9 @@
     </div>
 </div>
 <!-- Modal Edit -->
-<div class="modal" th:id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form th:method="POST" th:object="${user1}" th:action="@{/admin/{id}(id = ${user1.getId()})}" id="formEdit">
+        <form th:method="POST" th:object="${user1}" action="" id="formEdit">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
@@ -223,7 +194,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Edit">
+<!--                    <input type="submit" class="btn btn-primary" value="Edit" id = "goEdit">-->
+                    <input type="button" class="btn btn-primary" value="Edit" id = "goEdit" content="">
                 </div>
             </div>
         </form>
@@ -231,10 +203,10 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal" th:id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form th:method="POST" th:object="${user1}" th:action="@{/admin/{id}(id = ${user1.getId()})}" id="editForm">
+        <form th:method="POST" th:object="${user1}" th:action="@{/admin/{id}(id = ${user1.getId()})}" id="formDelete">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit user</h5>
@@ -263,7 +235,7 @@
                                 <br/>
                                 <h6 class="font-weight-bold">Role</h6>
                                 <select size="2" name="role" class="btn-block">
-                                    <option value="USER">USER</option>
+                                    <option value="USER" id = "roleD">USER</option>
                                     <option value="ADMIN">ADMIN</option>
                                 </select>
                             </div>
@@ -273,7 +245,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger text-light">
-                        <a class="text-light text-decoration-none" th:href="@{/admin/{id}/delete(id=${user1.getId()})}"
+                        <a class="text-light text-decoration-none" href=""
                            id="delete">Delete</a>
                     </button>
                 </div>
@@ -284,46 +256,148 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+       ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
-    $(function () {
-        let id
-        $('button.btn').click(function () {
+<script >
+    //Заполнение модального окна Edit
+    let jsonUser;
+    let rolesString
+    let id
+    $('button.btn.btn-primary').click(async function () {
             id = $(this).attr('content')
-            let loginId = $('#login' + id).text();
-            let passwordId = $('#password' + id).attr('name')
-            let firstNameId = $('#firstname' + id).text();
-            let lastNameId = $('#lastname' + id).text();
-            let ageId = $('#age' + id).text();
-            let growthId = $('#growth' + id).text();
-            $('#modalEdit').on('show.bs.modal', function () {
-                $(this).find('#login').attr('value', loginId);
-                $(this).find('#password').attr('value', passwordId);
-                $(this).find('#firstName').attr('value', firstNameId);
-                $(this).find('#lastName').attr('value', lastNameId);
-                $(this).find('#age').attr('value', ageId);
-                $(this).find('#growth').attr('value', growthId);
-                $('#formEdit').attr('action', '/admin/' + id)
-            })
+            let promise = await fetch('http://localhost:8080/admin/' + id)
+            jsonUser = await promise.json()
 
-            $('#modalDelete').on('show.bs.modal', function () {
-                $('#modalDelete').find('#loginD').attr('value', loginId);
-                $(this).find('#firstNameD').attr('value', firstNameId);
-                $(this).find('#lastNameD').attr('value', lastNameId);
-                $(this).find('#ageD').attr('value', ageId);
-                $(this).find('#growthD').attr('value', growthId);
-                $('#delete').attr('href', '/admin/delete/' + (id))
+            let edit = $("#modalEdit");
+            let login = jsonUser['login']
+            let password = jsonUser['password']
+            let firstName = jsonUser['firstName']
+            let lastName = jsonUser['lastName']
+            rolesString = jsonUser['rolesString']
+            let age = jsonUser['age']
+            let growth = jsonUser['growth']
+
+            $.ajax('http://localhost:8080/admin', {
+                method: "get",
+                dataType: "text",
+                success: function (msg) {
+                    edit.find('#login').attr('value', login);
+                    edit.find('#password').attr('value', password);
+                    edit.find('#firstName').attr('value', firstName);
+                    edit.find('#lastName').attr('value', lastName);
+                    edit.find('#age').attr('value', age);
+                    edit.find('#growth').attr('value', growth);
+                    $('#formEdit').attr('action', '/admin/' + id)
+                    $('#goEdit').attr('content', id)
+
+                }
             })
-        });
-    });
+            $('#modalEdit').modal('show')
+
+        const buttonEdit = $("#goEdit");
+        buttonEdit.click(
+        function() {
+           let form =  $('form').serializeArray()
+            let jsonEdit = {
+               id:id,
+                login: form[7].value,
+                password: form[8].value,
+                firstName: form[9].value,
+                lastName: form[10].value,
+                age: form[11].value,
+                growth: form[12].value,
+                rolesString: form[13].value
+
+            }
+            console.log(form[7].value)
+            console.log(form)
+            $.ajax("http://localhost:8080/admin", {
+                method: "put",
+                data: jsonEdit,
+                dataType: "text",
+                success: function (msg) {
+                    $('#modalEdit').modal('hide')
+                }
+            })
+        })
+    })
+// Заполнение модального окна Delete
+    $('button.btn.btn-danger').click(async function () {
+        let id = $(this).attr('content')
+        let promise = await fetch('http://localhost:8080/admin/' + id)
+        let json = await promise.json()
+        let delete1 = $("#modalDelete");
+        let login = json['login']
+        let password = json['password']
+        let firstName = json['firstName']
+        let lastName = json['lastName']
+        let rolesString = json['rolesString']
+        let age = json['age']
+        let growth = json['growth']
+
+        $.ajax('http://localhost:8080/admin', {
+            method: "get",
+            dataType: "text",
+            success: function (msg) {
+                delete1.find('#loginD').attr('value', login);
+                delete1.find('#passwordD').attr('value', password);
+                delete1.find('#firstNameD').attr('value', firstName);
+                delete1.find('#lastNameD').attr('value', lastName);
+                delete1.find('#ageD').attr('value', age);
+                delete1.find('#growthD').attr('value', growth);
+                delete1.find('#roleD').attr('value', rolesString);
+                $('#delete').attr('href', 'admin/delete/' + id)
+
+            }
+        })
+        $('#modalDelete').modal('show')
+    })
+
+    // Заполнение таблицы
+    $(async function () {
+        let promise = await fetch('http://localhost:8080/user')
+        let json = await promise.json()
+
+        $("<a></a>").text(json['id']).appendTo($("#actualUserId"))
+        $("<a></a>").text(json['login']).appendTo($("#actualLogin"))
+        $("<a></a>").text(json['firstName']).appendTo($("#actualFirstName"))
+        $("<a></a>").text(json['lastName']).appendTo($("#actualLastName"))
+        $("<a></a>").text(json['rolesString']).appendTo($("#actualRoles"))
+        $("<a></a>").text(json['age']).appendTo($("#actualAge"))
+        $("<a></a>").text(json['growth']).appendTo($("#actualGrowth"))
+        $("#actualEdit").attr('content', json['id'])
+        $("#actualDelete").attr('content', json['id'])
+        // $("<button type=\"button\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#modalDelete\" content=\"${user.getId()}\"></button>")
+        //         .text('Delete').appendTo($("#actualDelete"))
+    })
+    $(async function () {
+        let promise = await fetch('http://localhost:8080/users')
+        let json = await promise.json()
+        for (let key in json){
+            // console.log(json[key]['id'])
+            let id = json[key]['id']
+            let login = json[key]['login']
+            let firstName = json[key]['firstName']
+            let lastName = json[key]['lastName']
+            let rolesString = json[key]['rolesString']
+            let age = json[key]['age']
+            let growth = json[key]['growth']
+
+            $("<a></a>").text(id).appendTo($("#id" + id))
+            $("<a></a>").text(login).appendTo($("#login" + id))
+            $("<a></a>").text(firstName).appendTo($("#firstname" + id))
+            $("<a></a>").text(lastName).appendTo($("#lastname" + id))
+            $("<a></a>").text(rolesString).appendTo($("#roles" + id))
+            $("<a></a>").text(age).appendTo($("#age" + id))
+            $("<a></a>").text(growth).appendTo($("#growth" + id))
+        }
+    })
 </script>
 </body>
 </html>
