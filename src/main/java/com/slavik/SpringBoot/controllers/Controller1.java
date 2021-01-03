@@ -98,10 +98,12 @@ public class Controller1 {
 //        userService.upDate(id,user);
 //        return "redirect:/admin";
 //    }
-    @GetMapping("admin/delete/{id}")
-    public String delete(@PathVariable("id")Long id){
-        userService.remove(id);
-        return "redirect:/admin";
-    }
+
+
+//    @GetMapping("admin/delete/{id}")
+//    public String delete(@PathVariable("id")Long id){
+//        userService.remove(id);
+//        return "redirect:/admin";
+//    }
 
 }

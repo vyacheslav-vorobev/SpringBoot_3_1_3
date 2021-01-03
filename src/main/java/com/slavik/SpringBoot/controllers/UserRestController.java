@@ -17,7 +17,7 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/loadingUser")
     public User getUser(Authentication authentication) {
 //        model.addAttribute("user", user);
 //        model.addAttribute("userLogin", user.getLogin());

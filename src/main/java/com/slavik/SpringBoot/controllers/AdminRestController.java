@@ -49,4 +49,9 @@ public class AdminRestController {
         System.out.println(user.toString());
         return userService.getUser(user.getId());
     }
+    @GetMapping("admin/delete/{id}")
+    public String delete(@PathVariable("id")Long id){
+        userService.remove(id);
+        return id.toString();
+    }
 }
