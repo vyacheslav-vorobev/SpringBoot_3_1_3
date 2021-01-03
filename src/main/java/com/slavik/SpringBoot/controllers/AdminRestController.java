@@ -61,20 +61,12 @@ public class AdminRestController {
     @PostMapping("/admin")
     public User create(@QuartzDataSource User user){
         System.out.println("Сработал NEW");
-//        User user = new User();
-//        user.setLogin(login);
-//        user.setPassword(encoder.encode(password));
-//        user.setPassword(password);
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.getOne(2L));
         if(user.getRolesString().equals("ADMIN")){
             roles.add(roleService.getOne(1L));
         }
         user.setRoles(roles);
-//        user.setFirstName(firstName);
-//        user.setLastName(lastName);
-//        user.setAge(age);
-//        user.setGrowth(growth);
         userService.addUser(user);
         return user;
     }
