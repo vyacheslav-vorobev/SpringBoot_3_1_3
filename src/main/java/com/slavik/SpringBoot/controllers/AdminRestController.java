@@ -8,6 +8,7 @@ import com.slavik.SpringBoot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -33,7 +34,6 @@ public class AdminRestController {
     }
     @PutMapping("admin")
     public User update(@QuartzDataSource User user){
-//        System.out.println(user);
         Set<Role> roles = new HashSet<>();
         System.out.println(user.getRolesString().contains("ADMIN"));
         if(user.getRolesString().contains("ADMIN")) {
@@ -49,9 +49,33 @@ public class AdminRestController {
         System.out.println(user.toString());
         return userService.getUser(user.getId());
     }
-    @GetMapping("admin/delete/{id}")
+    @DeleteMapping("admin/delete/{id}")
     public String delete(@PathVariable("id")Long id){
         userService.remove(id);
         return id.toString();
+    }
+    @GetMapping("/admin/{id}")
+    public User getOneUser(@PathVariable("id")Long id, Model model){
+        return  userService.getUser(id);
+    }
+    @PostMapping("/admin")
+    public User create(@QuartzDataSource User user){
+        System.out.println("Сработал NEW");
+//        User user = new User();
+//        user.setLogin(login);
+//        user.setPassword(encoder.encode(password));
+//        user.setPassword(password);
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleService.getOne(2L));
+        if(user.getRolesString().equals("ADMIN")){
+            roles.add(roleService.getOne(1L));
+        }
+        user.setRoles(roles);
+//        user.setFirstName(firstName);
+//        user.setLastName(lastName);
+//        user.setAge(age);
+//        user.setGrowth(growth);
+        userService.addUser(user);
+        return user;
     }
 }
