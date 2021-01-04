@@ -25,7 +25,6 @@ public class User implements UserDetails {
     private int growth;
     private String rolesString;
 
-
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -33,7 +32,6 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     public User(){}
-
 
     public int getAge() {
         return age;

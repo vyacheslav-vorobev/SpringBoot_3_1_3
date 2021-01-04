@@ -52,40 +52,40 @@
                                 <div class="card-dody">
                                     <table class="table ">
                                         <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Login</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Role</th>
-                                            <th>Age</th>
-                                            <th>Growth</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Login</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Role</th>
+                                                <th>Age</th>
+                                                <th>Growth</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
                                         </thead>
                                         <tbody id ="tbody">
-                                        <tr class="table-active" id = "actualUser">
-                                            <th scope="row" id = "actualUserId"></th>
-                                            <td id= "actualLogin"></td>
-                                            <td id = "actualFirstName"></td>
-                                            <td id = "actualLastName"></td>
-                                            <td id = "actualRoles"></td>
-                                            <td id = "actualAge"></td>
-                                            <td id = "actualGrowth"></td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary edit" content="" id = "actualEdit">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td >
-                                                <button type="button" class="btn btn-danger text-light del" data-toggle="modal"
-                                                        data-target="#modalDelete" content="" id = "actualDelete">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="tab-content" th:each="user : ${users}" th:id="|del${user.getId()}|">
+                                            <tr class="table-active" id = "actualUser">
+                                                <th scope="row" id = "actualUserId"></th>
+                                                <td id= "actualLogin"></td>
+                                                <td id = "actualFirstName"></td>
+                                                <td id = "actualLastName"></td>
+                                                <td id = "actualRoles"></td>
+                                                <td id = "actualAge"></td>
+                                                <td id = "actualGrowth"></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary edit" content="" id = "actualEdit">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                                <td >
+                                                    <button type="button" class="btn btn-danger text-light del" data-toggle="modal"
+                                                            data-target="#modalDelete" content="" id = "actualDelete">
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="tab-content" th:each="user : ${users}" th:id="|del${user.getId()}|">
                                                 <th scope="row" th:id="|id${user.getId()}|"></th>
                                                 <td th:id="|login${user.getId()}|"></td>
                                                 <td th:id="|firstname${user.getId()}|"></td>
@@ -93,17 +93,18 @@
                                                 <td th:id="|roles${user.getId()}|"></td>
                                                 <td th:id="|age${user.getId()}|"></td>
                                                 <td th:id="|growth${user.getId()}|"></td>
-                                                <td >
+                                                <td>
                                                     <button type="button" class="btn btn-primary edit" th:content="${user.getId()}">
                                                         Edit
                                                     </button>
+                                                </td>
                                                 <td class="tdDel">
                                                     <button type="button" class="btn btn-danger del" data-toggle="modal"
                                                             data-target="#modalDelete" th:content="${user.getId()}">
                                                         Delete
                                                     </button>
                                                 </td>
-                                        </tr>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -111,43 +112,43 @@
                         </div>
 <!--                        Создание юзера-->
                         <div class="tab-pane fade active" id="new_user">
-                        <div class="card-header">
-                            <h4 class="card-title">Add new user</h4>
-                        </div>
+                            <div class="card-header">
+                                <h4 class="card-title">Add new user</h4>
+                            </div>
                             <div class="container">
                                 <div class="card-dody">
                                     <div class="row justify-content-center align-items-center" style="text-align: center;">
-                                    <form  th:method="POST" th:object="${user}" action="">
-                                        <br/>
-                                        <label class="font-weight-bold" for="login">Login</label>
-                                        <input type="text" th:field="*{login}" class="form-control">
+                                        <form  th:method="POST" th:object="${user}" action="">
+                                            <br/>
+                                            <label class="font-weight-bold" for="login">Login</label>
+                                            <input type="text" th:field="*{login}" class="form-control">
 
-                                        <label class="font-weight-bold" for="password">Password</label>
-                                        <input type="password" th:field="*{password}" class="form-control">
+                                            <label class="font-weight-bold" for="password">Password</label>
+                                            <input type="password" th:field="*{password}" class="form-control">
 
-                                        <label class="font-weight-bold" for="firstName">First Name</label>
-                                        <input type="text" th:field="*{firstName}" class="form-control">
+                                            <label class="font-weight-bold" for="firstName">First Name</label>
+                                            <input type="text" th:field="*{firstName}" class="form-control">
 
-                                        <label class="font-weight-bold" for="lastName">Last Name</label>
-                                        <input type="text" th:field="*{lastName}" class="form-control">
+                                            <label class="font-weight-bold" for="lastName">Last Name</label>
+                                            <input type="text" th:field="*{lastName}" class="form-control">
 
-                                        <label class="font-weight-bold" for="age">Age</label>
-                                        <input type="number" th:field="*{age}" class="form-control">
+                                            <label class="font-weight-bold" for="age">Age</label>
+                                            <input type="number" th:field="*{age}" class="form-control">
 
-                                        <label class="font-weight-bold" for="growth">Growth</label>
-                                        <input type="number" th:field="*{growth}" class="form-control">
+                                            <label class="font-weight-bold" for="growth">Growth</label>
+                                            <input type="number" th:field="*{growth}" class="form-control">
 
-                                        <h6 class="font-weight-bold">Role</h6>
-                                        <select size="2" name="role" class="btn-block">
-                                            <option selected value="USER">USER</option>
-                                            <option value="ADMIN">ADMIN</option>
-                                        </select>
-                                        <br/>
-                                        <button type="button" class="btn btn-success" id="newUser">Add new user</button>
-                                        <br/>
-                                        &nbsp
-                                    </form>
-                                </div>
+                                            <h6 class="font-weight-bold">Role</h6>
+                                            <select size="2" name="role" class="btn-block">
+                                                <option selected value="USER">USER</option>
+                                                <option value="ADMIN">ADMIN</option>
+                                            </select>
+                                            <br/>
+                                            <button type="button" class="btn btn-success" id="newUser">Add new user</button>
+                                            <br/>
+                                            &nbsp
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,34 +166,32 @@
                         <div class="card-dody">
                             <table class="table ">
                                 <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Login</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Role</th>
-                                    <th>Age</th>
-                                    <th>Growth</th>
-                                </tr>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Login</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Role</th>
+                                        <th>Age</th>
+                                        <th>Growth</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="table-active">
-                                    <th scope="row" id = "panelUserId"></th>
-                                    <td id= "panelLogin"></td>
-                                    <td id = "panelFirstName"></td>
-                                    <td id = "panelLastName"></td>
-                                    <td id = "panelRoles"></td>
-                                    <td id = "panelAge"></td>
-                                    <td id = "panelGrowth"></td>
-                                </tr>
+                                    <tr class="table-active">
+                                        <th scope="row" id = "panelUserId"></th>
+                                        <td id= "panelLogin"></td>
+                                        <td id = "panelFirstName"></td>
+                                        <td id = "panelLastName"></td>
+                                        <td id = "panelRoles"></td>
+                                        <td id = "panelAge"></td>
+                                        <td id = "panelGrowth"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
         </div>
     </div>
 </div>
@@ -246,8 +245,7 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form th:method="POST" th:object="${user1}" th:action="@{/admin/{id}(id = ${user1.getId()})}" id="formDelete">
             <div class="modal-content">
@@ -288,8 +286,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger text-light">
-                        <a class="text-light text-decoration-none"
-                           id="delete">Delete</a>
+                        <a class="text-light text-decoration-none" id="delete">Delete</a>
                     </button>
                 </div>
             </div>
@@ -308,7 +305,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script >
-
     //Заполнение модального окна Edit
     let jsonUser;
     let rolesString
@@ -339,10 +335,10 @@
                     edit.find('#growth').attr('value', growth);
                     $('#formEdit').attr('action', '/admin/' + id)
                     $('#goEdit').attr('content', id)
-
                 }
             })
-            $('#modalEdit').modal('show')
+        $('#modalEdit').modal('show')
+
         jQuery(document.body).on('click', "#goEdit", function() {
            let form =  $('form').serializeArray()
             let jsonEdit = {
@@ -354,7 +350,6 @@
                 age: form[11].value,
                 growth: form[12].value,
                 rolesString: form[13].value
-
             }
             $.ajax("http://localhost:8080/admin", {
                 method: "put",
@@ -375,7 +370,7 @@
                $("#roles" + id).text('[ROLE_USER, ROLE_ADMIN]')
            } else {
                $("#roles" + id).text('[ROLE_USER]')
-           }
+             }
         })
     }))
     //Создание юзера
@@ -429,19 +424,13 @@
         $("#user_table").attr('class',"tab-pane fade active show")
         $("#navLinkTable").attr('class',"nav-link active")
         $("#navLinkNew").attr('class',"nav-link")
-
-
-        // $( "#tabs" ). ( "option", "active",0)
     })
 
     // Заполнение модального окна Delete
     let d;
     jQuery(document.body).on('click', '.del', (async function () {
 
-        console.log("зашёл в заполнение модального окна")
-
         let id = await $(this).attr('content')
-        console.log(id)
         let promise = await fetch('http://localhost:8080/admin/' + id)
         let json = await promise.json()
         let login = json['login']
@@ -451,28 +440,25 @@
         let rolesString = json['rolesString']
         let age = json['age']
         let growth = json['growth']
-
-        console.log("сработал метод 1")
+        let idModalDelete = $("#modalDelete")
 
         $.ajax('http://localhost:8080/admin', {
             method: "get",
             dataType: "text",
             success: function (msg) {
-                $("#modalDelete").find('#loginD').attr('value', login);
-                $("#modalDelete").find('#passwordD').attr('value', password);
-                $("#modalDelete").find('#firstNameD').attr('value', firstName);
-                $("#modalDelete").find('#lastNameD').attr('value', lastName);
-                $("#modalDelete").find('#ageD').attr('value', age);
-                $("#modalDelete").find('#growthD').attr('value', growth);
-                $("#modalDelete").find('#roleD').attr('value', rolesString);
+                idModalDelete.find('#loginD').attr('value', login);
+                idModalDelete.find('#passwordD').attr('value', password);
+                idModalDelete.find('#firstNameD').attr('value', firstName);
+                idModalDelete.find('#lastNameD').attr('value', lastName);
+                idModalDelete.find('#ageD').attr('value', age);
+                idModalDelete.find('#growthD').attr('value', growth);
+                idModalDelete.find('#roleD').attr('value', rolesString);
                 d = 'admin/delete/' + id
-
             }
         })
-        console.log("Сработал метод 2")
-        $('#modalDelete').modal('show')
-    })
-    )
+            $('#modalDelete').modal('show')
+    }))
+
     //удаление из таблицы без перезагрузки
     $('#delete').click(async function(){
         let promise = await fetch(d, {
@@ -489,7 +475,7 @@
         let promise = await fetch('http://localhost:8080/loadingUser')
         let json = await promise.json()
 
-        //Таблица Админа
+        //Часть таблицы Админа
         $("<a></a>").text(json['id']).appendTo($("#actualUserId"))
         $("<a></a>").text(json['login']).appendTo($("#actualLogin"))
         $("<a></a>").text(json['firstName']).appendTo($("#actualFirstName"))
@@ -509,33 +495,27 @@
         $("<a></a>").text(json['age']).appendTo($("#panelAge"))
         $("<a></a>").text(json['growth']).appendTo($("#panelGrowth"))
     })
+    $(async function () {
+        let promise = await fetch('http://localhost:8080/users')
+        let json = await promise.json()
+        for (let key in json){
+            let id = json[key]['id']
+            let login = json[key]['login']
+            let firstName = json[key]['firstName']
+            let lastName = json[key]['lastName']
+            let rolesString = json[key]['rolesString']
+            let age = json[key]['age']
+            let growth = json[key]['growth']
 
-    table()
-    function table() {
-        $(async function () {
-            let promise = await fetch('http://localhost:8080/users')
-            let json = await promise.json()
-            for (let key in json){
-                let id = json[key]['id']
-                let login = json[key]['login']
-                let firstName = json[key]['firstName']
-                let lastName = json[key]['lastName']
-                let rolesString = json[key]['rolesString']
-                let age = json[key]['age']
-                let growth = json[key]['growth']
-
-                $("<a></a>").text(id).appendTo($("#id" + id))
-                $("<a></a>").text(login).appendTo($("#login" + id))
-                $("<a></a>").text(firstName).appendTo($("#firstname" + id))
-                $("<a></a>").text(lastName).appendTo($("#lastname" + id))
-                $("<a></a>").text(rolesString).appendTo($("#roles" + id))
-                $("<a></a>").text(age).appendTo($("#age" + id))
-                $("<a></a>").text(growth).appendTo($("#growth" + id))
-            }
-        })
-    }
-
-
+            $("<a></a>").text(id).appendTo($("#id" + id))
+            $("<a></a>").text(login).appendTo($("#login" + id))
+            $("<a></a>").text(firstName).appendTo($("#firstname" + id))
+            $("<a></a>").text(lastName).appendTo($("#lastname" + id))
+            $("<a></a>").text(rolesString).appendTo($("#roles" + id))
+            $("<a></a>").text(age).appendTo($("#age" + id))
+            $("<a></a>").text(growth).appendTo($("#growth" + id))
+        }
+    })
 </script>
 </body>
 </html>

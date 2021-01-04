@@ -18,11 +18,6 @@ import java.util.*;
 public class AdminController {
 
     @Autowired
-    private PasswordEncoder encoder;
-    @Autowired
-    private RoleService roleService;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/admin")
